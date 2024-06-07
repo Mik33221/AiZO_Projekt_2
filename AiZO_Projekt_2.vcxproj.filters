@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="MST">
+      <UniqueIdentifier>{102dfefe-8161-4ce5-ade8-a5cc407929d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ShortestPath">
+      <UniqueIdentifier>{46867bfc-3d06-434e-99f6-4479afc79b9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MaxFlow">
+      <UniqueIdentifier>{00d2e8aa-bb60-4daf-9391-c03752115a97}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AiZO_Projekt_2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Prim.h">
+      <Filter>MST</Filter>
+    </ClInclude>
+    <ClInclude Include="Kruskal.h">
+      <Filter>MST</Filter>
+    </ClInclude>
+    <ClInclude Include="Ford-Fulkerson.h">
+      <Filter>MaxFlow</Filter>
+    </ClInclude>
+    <ClInclude Include="Dijkstry.h">
+      <Filter>ShortestPath</Filter>
+    </ClInclude>
+    <ClInclude Include="Forda-Bellmana.h">
+      <Filter>ShortestPath</Filter>
+    </ClInclude>
+    <ClInclude Include="Output.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AdjList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
