@@ -1,7 +1,7 @@
 #pragma once
 #include "Graph.h"
 //lista incydencji
-class AdjList : Graph
+class DiAdjList : Graph
 {
 private:
 	struct node {
@@ -20,17 +20,17 @@ private:
 	int currentEdge;
 	int maxVertice;
 public:
-	AdjList(int verticeCount, float fillPercent = 100) {
+	DiAdjList(int verticeCount, float fillPercent = 100) {
 		if (fillPercent > 100 || fillPercent < 0 || verticeCount < 0) {
 			cout << "Blad w tworzeniu listy";
 			return;
 		}
 
-		maxEdge = (verticeCount * (verticeCount - 1) / 2) * (fillPercent / 100);
+		maxEdge = (verticeCount * (verticeCount - 1)) * (fillPercent / 100);
 		currentEdge = 0;
 		maxVertice = verticeCount;
 
-		if (maxEdge < verticeCount - 1) {
+		if (maxEdge < (verticeCount - 1) * 2) {
 			cout << "Za mala ilosc krawedzi";
 			return;
 		}
@@ -46,12 +46,14 @@ public:
 			int j = i + 1;
 			int randomWeight = 1 + rand() % 99;
 			addEdge(i, j, randomWeight);
+			randomWeight = 1 + rand() % 99;
+			addEdge(j, i, randomWeight);
 		}
 
 		cout << "Stworzono liste sasiedztwa";
 	}
 
-	~AdjList() {
+	~DiAdjList() {
 		for (int i = 0; i < maxVertice; i++) {
 			delete[] verticeList[i];
 		}
@@ -94,28 +96,6 @@ public:
 			verticeList[from] = temp;
 		}
 
-		node* newNode2 = new node;
-		newNode->Vertice = from;
-		newNode2->Value = weight;
-
-		// Add the new node to the 'to' vertex list
-		if (verticeListSize[to] == 0) {
-			verticeList[to] = new node[1];
-			verticeList[to][0] = *newNode;
-			verticeListSize[to]++;
-		}
-		else {
-			int size = verticeListSize[to];
-			verticeListSize[to]++;
-			node* temp = new node[size + 1];
-			for (int i = 0; i < size; i++) {
-				temp[i] = verticeList[to][i];
-			}
-			temp[size] = *newNode;
-			delete[] verticeList[to];
-			verticeList[to] = temp;
-		}
-
 		return 0;
 	}
 
@@ -149,8 +129,11 @@ public:
 	int fillGraph() {
 		for (int i = 0; i < maxVertice - 2; i++) {
 			for (int j = i + 2; j < maxVertice; j++) {
-				int randomWeight = 1 + rand() % 99; // Generate a random number between 1 and 99
+				int randomWeight = 1 + rand() % 99;
 				if (addEdge(i, j, randomWeight))
+					return 1;
+				randomWeight = 1 + rand() % 99;
+				if (addEdge(j, i, randomWeight))
 					return 1;
 			}
 		}

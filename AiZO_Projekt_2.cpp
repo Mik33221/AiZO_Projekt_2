@@ -16,5 +16,17 @@ int main() {
 	cout << endl;
 	dm->printGraph();
 	cout << endl;
+	AdjList* al = new AdjList(6);
+	cout << endl;
+	al->fillGraph();
+	cout << endl;
+	al->printGraph();
+	cout << endl;
+	DiAdjList* dal = new DiAdjList(6,80);
+	cout << endl;
+	dal->fillGraph();
+	cout << endl;
+	dal->printGraph();
+	cout << endl;
 	return 0;
 }

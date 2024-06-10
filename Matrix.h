@@ -27,8 +27,8 @@ public:
 		maxEdge = (verticeCount * (verticeCount - 1) / 2) * (fillPercent / 100);
 		currentEdge = 0;
 		maxVertice = verticeCount;
-		
-		if(maxEdge < verticeCount - 1) {
+
+		if (maxEdge < verticeCount - 1) {
 			cout << "Za mala ilosc krawedzi";
 			return;
 		}
@@ -43,11 +43,11 @@ public:
 		}
 
 		//upewniamy sie, ze graf bedzie spojny
-        for (int i = 0; i < maxVertice - 1; i++) {
-            int j = i + 1;
-            int randomWeight = 1 + rand() % 99;
-            addEdge(i, j, randomWeight);
-        }
+		for (int i = 0; i < maxVertice - 1; i++) {
+			int j = i + 1;
+			int randomWeight = 1 + rand() % 99;
+			addEdge(i, j, randomWeight);
+		}
 
 		cout << "Stworzono macierz incydencji";
 	}
@@ -56,7 +56,7 @@ public:
 		for (int i = 0; i < maxVertice; i++) {
 			delete[] incidencyMatrix[i];
 		}
-		delete[] incidencyMatrix;	
+		delete[] incidencyMatrix;
 		cout << "Usinieto macierz incydencji";
 	}
 
@@ -141,14 +141,14 @@ public:
 		return 0;
 	}
 
-    int fillGraph() {
-        for (int i = 0; i < maxVertice - 2; i++) {
-            for (int j = i + 2; j < maxVertice; j++) {
-                int randomWeight = 1 + rand() % 99; // Generate a random number between 1 and 99
+	int fillGraph() {
+		for (int i = 0; i < maxVertice - 2; i++) {
+			for (int j = i + 2; j < maxVertice; j++) {
+				int randomWeight = 1 + rand() % 99; // Generate a random number between 1 and 99
 				if (addEdge(i, j, randomWeight))
 					return 1;
-            }
-        }
+			}
+		}
 		return 0;
-    }
+	}
 };
