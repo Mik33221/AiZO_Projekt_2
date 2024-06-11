@@ -7,4 +7,5 @@ public:
 	virtual int checkEdge(int from, int to) = 0;
 	virtual int printGraph() = 0;
 	virtual int fillGraph() = 0;
+	virtual int getVerticeCount() = 0;
 };

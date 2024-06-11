@@ -134,6 +134,8 @@
     <ClInclude Include="Graph.h" />
     <ClInclude Include="DiAdjList.h" />
     <ClInclude Include="DiMatrix.h" />
+    <ClInclude Include="Edge.h" />
+    <ClInclude Include="PriorityQueue.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="AdjList.h" />
     <ClInclude Include="Output.h" />

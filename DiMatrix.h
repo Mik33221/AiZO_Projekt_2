@@ -72,9 +72,10 @@ public:
 	}
 
 	int checkEdge(int from, int to) {
+		
 		if (from >= maxVertice || from < 0 || to >= maxVertice || to < 0) {
 			cout << "Invalid vertices";
-			return 1;
+			return 0;
 		}
 		for (int i = 0; i < maxEdge; i++) {
 			if (incidencyMatrix[from][i] == -1 && incidencyMatrix[to][i] != 0) {
@@ -149,5 +150,9 @@ public:
 			}
 		}
 		return 0;
+	}
+
+	int getVerticeCount() {
+		return maxVertice;
 	}
 };

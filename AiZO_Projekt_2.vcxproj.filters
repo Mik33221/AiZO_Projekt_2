@@ -5,10 +5,6 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="MST">
       <UniqueIdentifier>{102dfefe-8161-4ce5-ade8-a5cc407929d4}</UniqueIdentifier>
     </Filter>
@@ -18,13 +14,20 @@
     <Filter Include="MaxFlow">
       <UniqueIdentifier>{00d2e8aa-bb60-4daf-9391-c03752115a97}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GraphRepresentation">
+      <UniqueIdentifier>{a61d12cc-1008-4249-b017-bb564da1abc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helpers">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AiZO_Projekt_2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="temp.cpp">
-      <Filter>Header Files</Filter>
+      <Filter>Helpers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -44,22 +47,28 @@
       <Filter>ShortestPath</Filter>
     </ClInclude>
     <ClInclude Include="Output.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Graph.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Matrix.h">
-      <Filter>Header Files</Filter>
+      <Filter>Helpers</Filter>
     </ClInclude>
     <ClInclude Include="AdjList.h">
-      <Filter>Header Files</Filter>
+      <Filter>GraphRepresentation</Filter>
     </ClInclude>
     <ClInclude Include="DiAdjList.h">
-      <Filter>Header Files</Filter>
+      <Filter>GraphRepresentation</Filter>
     </ClInclude>
     <ClInclude Include="DiMatrix.h">
-      <Filter>Header Files</Filter>
+      <Filter>GraphRepresentation</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph.h">
+      <Filter>GraphRepresentation</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix.h">
+      <Filter>GraphRepresentation</Filter>
+    </ClInclude>
+    <ClInclude Include="PriorityQueue.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Edge.h">
+      <Filter>Helpers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

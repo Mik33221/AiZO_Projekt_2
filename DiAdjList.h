@@ -1,7 +1,7 @@
 #pragma once
 #include "Graph.h"
 //lista incydencji
-class DiAdjList : Graph
+class DiAdjList : public Graph
 {
 private:
 	struct node {
@@ -100,6 +100,8 @@ public:
 	}
 
 	int checkEdge(int from, int to) {
+		
+
 		if (from < 0 || from >= maxVertice || to < 0 || to >= maxVertice) {
 			cout << "Invalid vertex index";
 			return 1;
@@ -138,5 +140,9 @@ public:
 			}
 		}
 		return 0;
+	}
+
+	int getVerticeCount() {
+		return maxVertice;
 	}
 };

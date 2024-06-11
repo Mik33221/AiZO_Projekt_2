@@ -4,8 +4,19 @@
 #include "AdjList.h"
 #include "DiAdjList.h"
 
+#include "Dijkstry.h"
+#include "Prim.h"
+#include "Kruskal.h"
+#include "Forda-Bellmana.h"
+
+#include <cassert>
+
+//2000 wierzcholkow to taki max
 int main() {
-	Matrix* m = new Matrix(8,50);
+	srand(time(NULL));
+	
+	/*
+	Matrix* m = new Matrix(6, 50);
 	cout << endl;
 	m->fillGraph();
 	cout << endl;
@@ -16,17 +27,28 @@ int main() {
 	cout << endl;
 	dm->printGraph();
 	cout << endl;
-	AdjList* al = new AdjList(6);
+	AdjList* al = new AdjList(30);
 	cout << endl;
 	al->fillGraph();
 	cout << endl;
 	al->printGraph();
 	cout << endl;
-	DiAdjList* dal = new DiAdjList(6,80);
+	DiAdjList* dal = new DiAdjList(6);
 	cout << endl;
 	dal->fillGraph();
 	cout << endl;
 	dal->printGraph();
 	cout << endl;
+	*/
+	
+	DiAdjList* m = new DiAdjList(100);
+	cout << endl;
+	m->fillGraph();
+	cout << endl;
+	//m->printGraph();
+	cout << endl;
+	ShortestPathFordBellman(m,1,2);
+	delete m;
+	
 	return 0;
 }
