@@ -9,7 +9,7 @@ private:
 	int currentEdge;
 	int maxVertice;
 public:
-	DiMatrix(int verticeCount, float fillPercent = 100)
+	DiMatrix(int verticeCount, float fillPercent = 100, bool connected = true)
 	{
 		if (fillPercent > 100 || fillPercent < 0 || verticeCount < 0) {
 			cout << "Blad w tworzeniu macierzy";
@@ -35,15 +35,16 @@ public:
 		}
 
 		//upewniamy sie, ze graf bedzie spojny
-		for (int i = 0; i < maxVertice - 1; i++) {
-			int j = i + 1;
-			int randomWeight = 1 + rand() % 99;
-			addEdge(i, j, randomWeight);
-			randomWeight = 1 + rand() % 99;
-			addEdge(j, i, randomWeight);
-		}
+		if (connected)
+			for (int i = 0; i < maxVertice - 1; i++) {
+				int j = i + 1;
+				int randomWeight = 1 + rand() % 99;
+				addEdge(i, j, randomWeight);
+				randomWeight = 1 + rand() % 99;
+				addEdge(j, i, randomWeight);
+			}
 
-		cout << "Stworzono skierowana macierz incydencji";
+		//cout << "Stworzono skierowana macierz incydencji";
 	}
 
 	~DiMatrix()
@@ -52,7 +53,7 @@ public:
 			delete[] incidencyMatrix[i];
 		}
 		delete[] incidencyMatrix;
-		cout << "Usunieto skierowana macierz incydencji";
+		//cout << "Usunieto skierowana macierz incydencji";
 	}
 
 	int addEdge(int from, int to, int weight)

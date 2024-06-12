@@ -6,26 +6,23 @@
 #include <queue>
 #include <vector>
 #include <iostream>
+#include <chrono>
 
 
-// Function to find the minimum spanning tree using Prim's algorithm
-void MSTPrim(Graph* graph) {
-    // Create a priority queue to store the edges
+auto MSTPrim(Graph* graph) {
+
+    auto start_time = std::chrono::high_resolution_clock::now();
+
     std::priority_queue<Edge, std::vector<Edge>, std::greater<Edge>> pq;
 
-    // Create a vector to store the visited vertices
     std::vector<bool> visited(graph->getVerticeCount(), false);
 
-    // Create a graph to store the minimum spanning tree
     std::vector<Edge> mst;
 
-    // Start with the first vertex
     int startVertex = 0;
     visited[startVertex] = true;
 
-    // Add all the edges of the start vertex to the priority queue
     for (int vertex = 0; vertex < graph->getVerticeCount(); vertex++) {
-        // Ignore self-loop edges
         if (startVertex == vertex) {
             continue;
         }
@@ -36,36 +33,30 @@ void MSTPrim(Graph* graph) {
         }
     }
 
-    // Variable to store the sum of weights of edges
     int sumOfWeights = 0;
 
-    // Loop until all vertices are visited
+    // Dla kazdej krawedzi
     while (!pq.empty()) {
-        // Get the edge with the minimum weight
         Edge minEdge = pq.top();
         pq.pop();
 
         int vertex1 = minEdge.getVertex1();
         int vertex2 = minEdge.getVertex2();
 
-        // Check if the edge forms a cycle
+        // Sprawdzamy czy krawedz nie tworzy cyklu
         if (visited[vertex1] && visited[vertex2]) {
             continue;
         }
 
-        // Add the edge to the minimum spanning tree
         mst.push_back(minEdge);
 
-        // Add the weight of the edge to the sum
         sumOfWeights += minEdge.weight;
 
-        // Mark the vertices as visited
         visited[vertex1] = true;
         visited[vertex2] = true;
 
-        // Add all the edges of the start vertex to the priority queue
+        // Wypelniamy priorityqueue krawedziami wychodzacymi z tego wierzcholka
         for (int vertex = 0; vertex < graph->getVerticeCount(); vertex++) {
-            // Ignore self-loop edges
             if (vertex2 == vertex) {
                 continue;
             }
@@ -77,10 +68,17 @@ void MSTPrim(Graph* graph) {
         }
     }
 
-    std::cout << "Minimum Spanning Tree:" << std::endl;
+    std::cout << "MST----------:" << std::endl;
     for (Edge edge : mst) {
         std::cout << edge.getVertex1() << " -- " << edge.getVertex2() << " : " << edge.weight << std::endl;
     }
 
-    std::cout << "Sum of weights of edges: " << sumOfWeights << std::endl;
+    std::cout << "Suma wag krawedzi: " << sumOfWeights << std::endl;
+
+    auto end_time = std::chrono::high_resolution_clock::now();
+    auto time = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
+
+    std::cout << "Czas w ms: " << time << endl;
+
+    return time;
 }

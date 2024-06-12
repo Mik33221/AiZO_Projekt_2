@@ -135,6 +135,7 @@
     <ClInclude Include="DiAdjList.h" />
     <ClInclude Include="DiMatrix.h" />
     <ClInclude Include="Edge.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="PriorityQueue.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="AdjList.h" />
@@ -142,8 +143,11 @@
     <ClInclude Include="Prim.h" />
     <ClInclude Include="Kruskal.h" />
     <ClInclude Include="Ford-Fulkerson.h" />
-    <ClInclude Include="Dijkstry.h" />
-    <ClInclude Include="Forda-Bellmana.h" />
+    <ClInclude Include="Dijkstra.h" />
+    <ClInclude Include="Ford-Bellman.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Text.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

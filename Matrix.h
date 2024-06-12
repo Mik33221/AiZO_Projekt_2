@@ -18,7 +18,7 @@ private:
 	int maxVertice;
 
 public:
-	Matrix(int verticeCount, float fillPercent = 100) {
+	Matrix(int verticeCount, float fillPercent = 100, bool connected = true) {
 		if (fillPercent > 100 || fillPercent < 0 || verticeCount < 0) {
 			cout << "Blad w tworzeniu macierzy";
 			return;
@@ -43,13 +43,14 @@ public:
 		}
 
 		//upewniamy sie, ze graf bedzie spojny
-		for (int i = 0; i < maxVertice - 1; i++) {
-			int j = i + 1;
-			int randomWeight = 1 + rand() % 99;
-			addEdge(i, j, randomWeight);
-		}
+		if(connected)
+			for (int i = 0; i < maxVertice - 1; i++) {
+				int j = i + 1;
+				int randomWeight = 1 + rand() % 99;
+				addEdge(i, j, randomWeight);
+			}
 
-		cout << "Stworzono macierz incydencji";
+		//cout << "Stworzono macierz incydencji";
 	}
 
 	~Matrix() {
@@ -57,7 +58,7 @@ public:
 			delete[] incidencyMatrix[i];
 		}
 		delete[] incidencyMatrix;
-		cout << "Usinieto macierz incydencji";
+		//cout << "Usinieto macierz incydencji";
 	}
 
 	int addEdge(int from, int to, int weight) {

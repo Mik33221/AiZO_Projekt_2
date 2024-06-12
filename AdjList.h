@@ -20,7 +20,7 @@ private:
 	int currentEdge;
 	int maxVertice;
 public:
-	AdjList(int verticeCount, float fillPercent = 100) {
+	AdjList(int verticeCount, float fillPercent = 100, bool connected = true) {
 		if (fillPercent > 100 || fillPercent < 0 || verticeCount < 0) {
 			cout << "Blad w tworzeniu listy";
 			return;
@@ -42,21 +42,23 @@ public:
 		}
 
 		//upewniamy sie, ze graf bedzie spojny
-		for (int i = 0; i < maxVertice - 1; i++) {
-			int j = i + 1;
-			int randomWeight = 1 + rand() % 99;
-			addEdge(i, j, randomWeight);
-		}
+		if (connected)
+			for (int i = 0; i < maxVertice - 1; i++) {
+				int j = i + 1;
+				int randomWeight = 1 + rand() % 99;
+				addEdge(i, j, randomWeight);
+			}
 
-		cout << "Stworzono liste sasiedztwa";
+		//cout << "Stworzono liste sasiedztwa";
 	}
 
 	~AdjList() {
 		for (int i = 0; i < maxVertice; i++) {
-			delete[] verticeList[i];
+			if (verticeListSize[i] != 0)
+				delete[] verticeList[i];
 		}
 		delete[] verticeList;
-		cout << "Usinieto liste sasiedztwa";
+		//cout << "Usinieto liste sasiedztwa";
 	}
 
 	int addEdge(int from, int to, int weight) {

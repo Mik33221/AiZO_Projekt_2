@@ -4,9 +4,11 @@
 #include <vector>  
 #include <limits.h>
 #include <iostream>
+#include <chrono>
 
-// Function to find the shortest path using Ford-Bellman algorithm
 void ShortestPathFordBellman(Graph* graph, int startNode, int endNode) {
+
+    auto start_time = std::chrono::high_resolution_clock::now();
 
     int numNodes = graph->getVerticeCount();
 
@@ -15,16 +17,15 @@ void ShortestPathFordBellman(Graph* graph, int startNode, int endNode) {
         return;
     }
 
-    // Create an array to store the distances from the start node to all other nodes
+    // Dystans of startowego wierzcholka do wszystkich innych
     int* distances = new int[numNodes];
     for (int i = 0; i < numNodes; i++) {
         distances[i] = INT_MAX;
     }
 
-    // Set the distance of the start node to 0
     distances[startNode] = 0;
 
-    // Relax edges repeatedly
+    // Wielokrotna relaksacja wszystkich krawedzi
     for (int i = 0; i < numNodes - 1; i++) {
         for (int u = 0; u < numNodes; u++) {
             for (int v = 0; v < numNodes; v++) {
@@ -39,12 +40,9 @@ void ShortestPathFordBellman(Graph* graph, int startNode, int endNode) {
         }
     }
 
-    // Create a vector to store the shortest path
     std::vector<int> shortestPath;
 
-    // If there is a path from the start node to the end node
     if (distances[endNode] != INT_MAX) {
-        // Traverse the path backwards from the end node to the start node
         int currentNode = endNode;
         while (currentNode != startNode) {
             shortestPath.push_back(currentNode);
@@ -60,18 +58,22 @@ void ShortestPathFordBellman(Graph* graph, int startNode, int endNode) {
             }
         }
 
-        // Reverse the shortest path to get the correct order
         std::reverse(shortestPath.begin(), shortestPath.end());
     }
 
-    std::cout << "Shortest Path: ";
+    std::cout << "Najkrotsza droga: ";
     std::cout << startNode << " ";
     for (int node : shortestPath) {
         std::cout << node << " ";
     }
-    std::cout << "Distance: " << distances[endNode] << std::endl;
+    std::cout << "Dystans: " << distances[endNode] << std::endl;
 
     delete[] distances;
 
     std::cout << std::endl;
+
+    auto end_time = std::chrono::high_resolution_clock::now();
+    auto time = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
+
+    std::cout << "Czas w ms: " << time << endl;
 }

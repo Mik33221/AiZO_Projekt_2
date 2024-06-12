@@ -6,10 +6,10 @@
 #include <queue>
 #include <vector>
 #include <iostream>
+#include <chrono>
 
 
 
-// Function to find the parent of a vertex
 int findParent(std::vector<int>& parent, int vertex) {
     if (parent[vertex] != vertex) {
         parent[vertex] = findParent(parent, parent[vertex]);
@@ -17,12 +17,12 @@ int findParent(std::vector<int>& parent, int vertex) {
     return parent[vertex];
 }
 
-// Function to find the minimum spanning tree using Kruskal's algorithm
-void MSTKruskal(Graph* graph) {
-    // Create a priority queue to store the edges
+auto MSTKruskal(Graph* graph) {
+
+    auto start_time = std::chrono::high_resolution_clock::now();
+
     std::priority_queue<Edge, std::vector<Edge>, std::greater<Edge>> edges;
 
-    // Add all the edges to the priority queue
     for (int vertex1 = 0; vertex1 < graph->getVerticeCount(); vertex1++) {
         for (int vertex2 = vertex1 + 1; vertex2 < graph->getVerticeCount(); vertex2++) {
             int weight = graph->checkEdge(vertex1, vertex2);
@@ -33,21 +33,18 @@ void MSTKruskal(Graph* graph) {
         }
     }
 
-    // Create a vector to store the parent of each vertex
+    // Wektor na rodzicow kazdego wierzcholka
     std::vector<int> parent(graph->getVerticeCount());
 
-    // Initialize the parent vector
     for (int vertex = 0; vertex < graph->getVerticeCount(); vertex++) {
         parent[vertex] = vertex;
     }
 
-    // Create a vector to store the minimum spanning tree
     std::vector<Edge> mst;
 
-    // Variable to store the sum of weights of edges
     int sumOfWeights = 0;
 
-    // Loop through all the edges
+    // Dla kazdej krawedzi
     while (!edges.empty()) {
         Edge edge = edges.top();
         edges.pop();
@@ -55,28 +52,31 @@ void MSTKruskal(Graph* graph) {
         int vertex1 = edge.getVertex1();
         int vertex2 = edge.getVertex2();
 
-        // Find the parent of each vertex
         int parent1 = findParent(parent, vertex1);
         int parent2 = findParent(parent, vertex2);
 
-        // Check if adding the edge will form a cycle
+        // Sprawdzamy czy nie tworzy sie cykl
         if (parent1 != parent2) {
-            // Add the edge to the minimum spanning tree
             mst.push_back(edge);
 
-            // Add the weight of the edge to the sum
             sumOfWeights += edge.weight;
 
-            // Union the two vertices
             parent[parent1] = parent2;
         }
     }
 
-    std::cout << "Minimum Spanning Tree:" << std::endl;
+    std::cout << "MST----------:" << std::endl;
     for (Edge edge : mst) {
         std::cout << edge.getVertex1() << " -- " << edge.getVertex2() << " : " << edge.weight << std::endl;
     }
 
-    std::cout << "Sum of weights of edges: " << sumOfWeights << std::endl;
+    std::cout << "Suma wag krawedzi: " << sumOfWeights << std::endl;
+
+    auto end_time = std::chrono::high_resolution_clock::now();
+    auto time = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
+
+    std::cout << "Czas w ms: " << time << endl;
+
+    return time;
 }
 
