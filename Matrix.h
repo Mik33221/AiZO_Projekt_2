@@ -1,5 +1,6 @@
 #pragma once
 #include "Graph.h"
+#include <vector>
 
 using namespace std;
 
@@ -156,5 +157,10 @@ public:
 
 	int getVerticeCount() {
 		return maxVertice;
+	}
+
+	std::vector<Edge> getEdges(int vertex) {
+		std::vector<Edge> edges;
+		return edges;
 	}
 };

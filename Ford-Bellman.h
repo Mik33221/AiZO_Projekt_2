@@ -6,7 +6,7 @@
 #include <iostream>
 #include <chrono>
 
-void ShortestPathFordBellman(Graph* graph, int startNode, int endNode) {
+auto ShortestPathFordBellman(Graph* graph, int startNode, int endNode) {
 
     auto start_time = std::chrono::high_resolution_clock::now();
 
@@ -14,10 +14,9 @@ void ShortestPathFordBellman(Graph* graph, int startNode, int endNode) {
 
     if (startNode < 0 || startNode >= numNodes || endNode < 0 || endNode >= numNodes) {
         std::cout << "Vertices out of this graph scope";
-        return;
     }
 
-    // Dystans of startowego wierzcholka do wszystkich innych
+    // Dystans od startowego wierzcholka do wszystkich innych
     int* distances = new int[numNodes];
     for (int i = 0; i < numNodes; i++) {
         distances[i] = INT_MAX;
@@ -26,17 +25,19 @@ void ShortestPathFordBellman(Graph* graph, int startNode, int endNode) {
     distances[startNode] = 0;
 
     // Wielokrotna relaksacja wszystkich krawedzi
-    for (int i = 0; i < numNodes - 1; i++) {
-        for (int u = 0; u < numNodes; u++) {
-            for (int v = 0; v < numNodes; v++) {
+    for (int i = 0; i < numNodes - 1; i++) {    //wykonujemy wierzcholki - 1 razy
+        for (int u = 0; u < numNodes; u++) {    
+            std::vector<Edge> edges = graph->getEdges(u);
+            for (Edge edge : edges) {
+				int v = edge.getVertex2();
+				int weight = edge.getWeight();
                 if (u == v) {
-					continue;
-				}
-                int edgeWeight = graph->checkEdge(u, v);
-                if (edgeWeight != 0 && distances[u] != INT_MAX && distances[u] + edgeWeight < distances[v]) {
-                    distances[v] = distances[u] + edgeWeight;
+                    continue;
                 }
-            }
+				if (weight != 0 && distances[u] != INT_MAX && distances[u] + weight < distances[v]) {
+					distances[v] = distances[u] + weight;
+				}
+			}
         }
     }
 
@@ -76,4 +77,6 @@ void ShortestPathFordBellman(Graph* graph, int startNode, int endNode) {
     auto time = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
 
     std::cout << "Czas w ms: " << time << endl;
+
+    return time;
 }

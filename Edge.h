@@ -33,4 +33,8 @@ struct Edge {
     int getVertex2() {
         return vertex2;
     }
+
+    int getWeight() {
+		return weight;
+	}
 };

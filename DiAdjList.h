@@ -103,7 +103,6 @@ public:
 
 	int checkEdge(int from, int to) {
 		
-
 		if (from < 0 || from >= maxVertice || to < 0 || to >= maxVertice) {
 			cout << "Invalid vertex index";
 			return 1;
@@ -147,4 +146,14 @@ public:
 	int getVerticeCount() {
 		return maxVertice;
 	}
+
+	vector <Edge> getEdges(int vertex) {
+		vector <Edge> edges;
+		for (int i = 0; i < verticeListSize[vertex]; i++) {
+			Edge edge(vertex, verticeList[vertex][i].Vertice, verticeList[vertex][i].Value);
+			edges.push_back(edge);
+		}
+		return edges;
+	}
+
 };

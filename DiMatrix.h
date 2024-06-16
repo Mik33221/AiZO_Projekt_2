@@ -156,4 +156,24 @@ public:
 	int getVerticeCount() {
 		return maxVertice;
 	}
+
+	vector <Edge> getEdges(int vertex) {
+		vector <Edge> edges;
+		for (int i = 0; i < maxEdge; i++) {
+			if (incidencyMatrix[vertex][i] == -1) {
+				for (int j = 0; j < maxVertice; j++) {
+					if (j == vertex) {
+						continue;
+					}
+					if (incidencyMatrix[j][i] > 0) {
+						Edge edge(vertex, j, incidencyMatrix[j][i]);
+						edges.push_back(edge);
+						break;
+					}
+				}
+			}
+		}
+		return edges;
+	}
+
 };

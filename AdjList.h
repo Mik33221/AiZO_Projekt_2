@@ -164,4 +164,9 @@ public:
 	int getVerticeCount() {
 		return maxVertice;
 	}
+
+	std::vector<Edge> getEdges(int vertex) {
+		std::vector<Edge> edges;
+		return edges;
+	}
 };

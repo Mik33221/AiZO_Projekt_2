@@ -7,7 +7,7 @@
 #include <iostream>
 #include <chrono>
 
-void ShortestPathDijkstra(Graph* graph, int startNode, int endNode) {
+auto ShortestPathDijkstra(Graph* graph, int startNode, int endNode) {
 
     auto start_time = std::chrono::high_resolution_clock::now();
 
@@ -15,7 +15,6 @@ void ShortestPathDijkstra(Graph* graph, int startNode, int endNode) {
 
     if (startNode < 0 || startNode >= numNodes || endNode < 0 || endNode >= numNodes) {
         cout << "Vertices out of this graph scope";
-        return;
     }
 
     // Dystans od startowego wierzcholka do wszystkich innych
@@ -87,4 +86,6 @@ void ShortestPathDijkstra(Graph* graph, int startNode, int endNode) {
     auto time = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
 
     std::cout << "Czas w ms: " << time << endl;
+
+    return time;
 }

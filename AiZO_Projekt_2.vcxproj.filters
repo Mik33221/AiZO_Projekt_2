@@ -11,9 +11,6 @@
     <Filter Include="ShortestPath">
       <UniqueIdentifier>{46867bfc-3d06-434e-99f6-4479afc79b9a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MaxFlow">
-      <UniqueIdentifier>{00d2e8aa-bb60-4daf-9391-c03752115a97}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GraphRepresentation">
       <UniqueIdentifier>{a61d12cc-1008-4249-b017-bb564da1abc9}</UniqueIdentifier>
     </Filter>
@@ -36,9 +33,6 @@
     </ClInclude>
     <ClInclude Include="Kruskal.h">
       <Filter>MST</Filter>
-    </ClInclude>
-    <ClInclude Include="Ford-Fulkerson.h">
-      <Filter>MaxFlow</Filter>
     </ClInclude>
     <ClInclude Include="Dijkstra.h">
       <Filter>ShortestPath</Filter>
