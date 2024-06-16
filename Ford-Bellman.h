@@ -62,21 +62,21 @@ auto ShortestPathFordBellman(Graph* graph, int startNode, int endNode) {
         std::reverse(shortestPath.begin(), shortestPath.end());
     }
 
-    //std::cout << "Najkrotsza droga: ";
-    //std::cout << startNode << " ";
-    //for (int node : shortestPath) {
-    //    std::cout << node << " ";
-    //}
-    //std::cout << "Dystans: " << distances[endNode] << std::endl;
+    std::cout << "Najkrotsza droga: ";
+    std::cout << startNode << " ";
+    for (int node : shortestPath) {
+        std::cout << node << " ";
+    }
+    std::cout << "Dystans: " << distances[endNode] << std::endl;
 
     delete[] distances;
 
-    //std::cout << std::endl;
+    std::cout << std::endl;
 
     auto end_time = std::chrono::high_resolution_clock::now();
     auto time = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
 
-    //std::cout << "Czas w ms: " << time << endl;
+    std::cout << "Czas w ms: " << time << endl;
 
     return time;
 }
