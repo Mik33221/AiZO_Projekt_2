@@ -65,17 +65,17 @@ auto MSTKruskal(Graph* graph) {
         }
     }
 
-    std::cout << "MST----------:" << std::endl;
-    for (Edge edge : mst) {
-        std::cout << edge.getVertex1() << " -- " << edge.getVertex2() << " : " << edge.weight << std::endl;
-    }
+    //std::cout << "MST----------:" << std::endl;
+    //for (Edge edge : mst) {
+    //    std::cout << edge.getVertex1() << " -- " << edge.getVertex2() << " : " << edge.weight << std::endl;
+    //}
 
-    std::cout << "Suma wag krawedzi: " << sumOfWeights << std::endl;
+    //std::cout << "Suma wag krawedzi: " << sumOfWeights << std::endl;
 
     auto end_time = std::chrono::high_resolution_clock::now();
     auto time = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
 
-    std::cout << "Czas w ms: " << time << endl;
+    //std::cout << "Czas w ms: " << time << endl;
 
     return time;
 }
